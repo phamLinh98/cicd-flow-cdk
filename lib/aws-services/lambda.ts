@@ -8,11 +8,13 @@ export class AppLambda extends Construct {
   constructor(scope: Construct, id: string, props: AppLambdaProps) {
     super(scope, id);
 
-    this.lambdaFunction = new lambda.Function(this, 'LambdaFunction', {
+    this.lambdaFunction = new lambda.Function(this, "LambdaFunction", {
       functionName: props.lambdaName,
-      runtime: lambda.Runtime.NODEJS_18_X,
-      handler: 'index.handler',
-      code: lambda.Code.fromInline('exports.handler = async () => { return \"Hello from Lambda!\"; }'),
+      runtime: lambda.Runtime.NODEJS_20_X,
+      handler: "index.handler",
+      code: lambda.Code.fromInline(
+        'exports.handler = async () => { return \"Lambda sample code\"; }',
+      ),
     });
   }
 }
