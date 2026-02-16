@@ -2,7 +2,7 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { AppBucket } from "./aws-services/s3";
 import { AppLambda } from "./aws-services/lambda";
-import { LambdaS3ListAllMyBucketsPolicy } from "./aws-services/iam"; // import thêm
+import { LambdaS3ListAllMyBucketsPolicy } from "./aws-services/iam";
 import { envConfig } from "./config/envConfig";
 
 export class MainFlowCdk extends cdk.Stack {
