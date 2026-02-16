@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm ci
+
+  pre_build:
+    commands:
+      - npm run auto-test
+
+  build:
+    commands:
+      - npx cdk synth
+      - npx cdk diff
+      - npx cdk deploy --require-approval never
+
+artifacts:
+  files:
+    - cdk.out/**/*

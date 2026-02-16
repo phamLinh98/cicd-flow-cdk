@@ -5,6 +5,7 @@
     "cici-flow-cdk": "bin/cici-flow-cdk.js"
   },
   "scripts": {
+    "auto-test":"npx jest index.test.js",
     "cdk-sync": "cdk synth",
     "cdk-deploy": "cdk deploy",
     "cdk-diff": "cdk diff",
