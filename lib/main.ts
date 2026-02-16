@@ -2,6 +2,7 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { AppBucket } from "./aws-services/s3";
+import { AppLambda } from "./aws-services/lambda";
 import { envConfig } from "./config/envConfig";
 
 export class MainFlowCdk extends cdk.Stack {
@@ -10,6 +11,10 @@ export class MainFlowCdk extends cdk.Stack {
 
     new AppBucket(this, "AppS3", {
       bucketName: envConfig.bucketName,
+    });
+
+    new AppLambda(this, "AppLambda", {
+      lambdaName: envConfig.lambdaName,
     });
   }
 }
