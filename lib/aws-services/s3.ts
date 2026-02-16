@@ -14,7 +14,7 @@ export class AppBucket extends Construct {
       versioned: true,
       encryption: s3.BucketEncryption.S3_MANAGED,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      autoDeleteObjects: false,
+      autoDeleteObjects: true,
     });
   }
 }
