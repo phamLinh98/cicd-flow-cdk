@@ -7,7 +7,7 @@
   "scripts": {
     "auto-test":"npx jest --passWithNoTests",
     "cdk-sync": "cdk synth",
-    "cdk-deploy": "cdk deploy",
+    "cdk-deploy": "cdk deploy --require-approval never",
     "cdk-diff": "cdk diff",
     "cdk-destroy":"cdk destroy",
     "build": "tsc",

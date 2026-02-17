@@ -6,11 +6,16 @@ phases:
       nodejs: 20
     commands:
       - npm ci
+      - npm install -g aws-cdk
 
+  pre_build:
+    commands:
+      - npm run build
+      - npm run auto-test
 
   build:
     commands:
-      - npm run cdk-deploy --require-approval never
+      - cdk deploy --require-approval never --all
 
 artifacts:
   files:
