@@ -11,10 +11,14 @@ export class AppLambda extends Construct {
     this.lambdaFunction = new lambda.Function(this, "LambdaFunction", {
       functionName: props.lambdaName,
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: "index.mjs.handler",
+      handler: "index.handler",
       code: lambda.Code.fromInline(
-        'exports.handler = async () => { return \"Lambda sample code\"; }',
+        'export const handler = async () => { return "Lambda sample code"; };',
       ),
+      environment: {
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+        NODE_OPTIONS: '--enable-source-maps',
+      },
     });
   }
 }
