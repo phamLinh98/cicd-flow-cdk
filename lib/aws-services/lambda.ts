@@ -11,7 +11,7 @@ export class AppLambda extends Construct {
     this.lambdaFunction = new lambda.Function(this, "LambdaFunction", {
       functionName: props.lambdaName,
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: "index.handler",
+      handler: "index.mjs.handler",
       code: lambda.Code.fromInline(
         'exports.handler = async () => { return \"Lambda sample code\"; }',
       ),
