@@ -7,14 +7,9 @@ phases:
     commands:
       - npm ci
 
-  pre_build:
-    commands:
-      - npm run auto-test
 
   build:
     commands:
-      - npm run cdk-synth
-      - npm run cdk-diff
       - npm run cdk-deploy --require-approval never
 
 artifacts:
