@@ -13,8 +13,7 @@ export class AppBucket extends Construct {
       bucketName: props?.bucketName,
       versioned: true,
       encryption: s3.BucketEncryption.S3_MANAGED,
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-      autoDeleteObjects: true,
+      removalPolicy: cdk.RemovalPolicy.DESTROY
     });
   }
 }
