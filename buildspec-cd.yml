@@ -10,7 +10,9 @@ phases:
 
   build:
     commands:
-      - ls cdk.out/
+      - ls -la
+      - unzip -o '*.zip' -d . || true
+      - ls -la
       - cdk deploy --require-approval never --all
 
 artifacts:
