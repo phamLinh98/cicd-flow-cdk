@@ -5,12 +5,13 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - npm ci                   
+      - npm ci
       - npm install -g aws-cdk
 
   build:
     commands:
-      - cdk deploy --require-approval never --all --app cdk.out
+      - ls cdk.out/
+      - cdk deploy --require-approval never --all
 
 artifacts:
   files:
