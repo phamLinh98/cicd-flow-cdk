@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm ci
+      - npm install -g aws-cdk
+
+  pre_build:
+    commands:
+      - npm run build
+      - npm run auto-test
+
+  build:
+    commands:
+      - cdk synth
+
+artifacts:
+  files:
+    - cdk.out/**/*
+  discard-paths: no
