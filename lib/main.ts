@@ -25,5 +25,9 @@ export class MainFlowCdk extends cdk.Stack {
     new AppSqs(this, "CdkSqsMessage", {
       queueName: "cdk-sqs-message"
     });
+
+    new AppSqs(this, "LambdaDeadMessage", {
+      queueName: "lambda-dead-message"
+    });
   }
 }
