@@ -5,6 +5,7 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         AWS_DEFAULT_REGION    = 'ap-northeast-1'
+        PATH                  = "/var/jenkins_home/.npm-global/bin:${env.PATH}"
     }
 
     stages {
@@ -19,7 +20,6 @@ pipeline {
             steps {
                 sh '''
                     npm ci
-                    npm install -g aws-cdk
                 '''
             }
         }
@@ -51,7 +51,6 @@ pipeline {
             steps {
                 sh '''
                     npm ci
-                    npm install -g aws-cdk
                 '''
             }
         }
