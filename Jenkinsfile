@@ -18,9 +18,12 @@ pipeline {
 
         stage('CI - Install') {
             steps {
-                sh '''
-                    npm ci
-                '''
+                withCredentials([file(credentialsId: 'app-env-file', variable: 'ENV_FILE')]) {
+                    sh '''
+                        cp $ENV_FILE .env
+                        npm ci
+                    '''
+                }
             }
         }
 
@@ -49,9 +52,12 @@ pipeline {
 
         stage('CD - Install') {
             steps {
-                sh '''
-                    npm ci
-                '''
+                withCredentials([file(credentialsId: 'app-env-file', variable: 'ENV_FILE')]) {
+                    sh '''
+                        cp $ENV_FILE .env
+                        npm ci
+                    '''
+                }
             }
         }
 
