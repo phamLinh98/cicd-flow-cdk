@@ -13,17 +13,15 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+                withCredentials([file(credentialsId: 'app-env-file', variable: 'ENV_FILE')]) {
+                    sh 'cp $ENV_FILE .env'
+                }
             }
         }
 
         stage('CI - Install') {
             steps {
-                withCredentials([file(credentialsId: 'app-env-file', variable: 'ENV_FILE')]) {
-                    sh '''
-                        cp $ENV_FILE .env
-                        npm ci
-                    '''
-                }
+                sh 'npm ci'
             }
         }
 
@@ -38,9 +36,7 @@ pipeline {
 
         stage('CI - Synth') {
             steps {
-                sh '''
-                    cdk synth
-                '''
+                sh 'cdk synth'
             }
         }
 
@@ -52,20 +48,13 @@ pipeline {
 
         stage('CD - Install') {
             steps {
-                withCredentials([file(credentialsId: 'app-env-file', variable: 'ENV_FILE')]) {
-                    sh '''
-                        cp $ENV_FILE .env
-                        npm ci
-                    '''
-                }
+                sh 'npm ci'
             }
         }
 
         stage('CD - Deploy Production') {
             steps {
-                sh '''
-                    cdk deploy --require-approval never --all
-                '''
+                sh 'cdk deploy --require-approval never --all'
             }
         }
     }
